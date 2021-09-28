@@ -59,6 +59,7 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarItemsShouldFillAvailableWidth = true
         // only used if button bar is created programaticaly and not using storyboards or nib files
         public var buttonBarHeight: CGFloat?
+        public var buttonBarY:CGFloat = 0
     }
 
     public var style = Style()
@@ -114,7 +115,7 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
                 let flowLayout = UICollectionViewFlowLayout()
                 flowLayout.scrollDirection = .horizontal
                 let buttonBarHeight = settings.style.buttonBarHeight ?? 44
-                let buttonBar = ButtonBarView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: buttonBarHeight), collectionViewLayout: flowLayout)
+            let buttonBar = ButtonBarView(frame: CGRect(x: 0, y: settings.style.buttonBarY, width: view.frame.size.width, height: buttonBarHeight), collectionViewLayout: flowLayout)
                 buttonBar.backgroundColor = .orange
                 buttonBar.selectedBar.backgroundColor = .black
                 buttonBar.autoresizingMask = .flexibleWidth
